@@ -44,6 +44,8 @@ function createChromeTarget(
 ) {
   const resolvedBaseUrl = getAbsoluteURL(baseUrl);
 
+  console.log("resolvedBaseUrl>>>", resolvedBaseUrl)
+
   function getDeviceMetrics(options) {
     return {
       width: options.width,
