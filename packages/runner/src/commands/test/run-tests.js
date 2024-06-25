@@ -91,6 +91,16 @@ async function runTests(flatConfigurations, options) {
   ) => {
     let storybook;
 
+    console.log("getTargetTasks", {
+      targetName,
+      target,
+      configurations,
+      concurrency,
+      tolerance,
+      batchSize,
+      batchBuilder
+    });
+
     return {
       id: targetName,
       meta: {
@@ -219,6 +229,7 @@ async function runTests(flatConfigurations, options) {
 
   const createTargetTask = (configurations) => {
     const { target } = configurations[Object.keys(configurations)[0]];
+    console.log("createTargetTask-target", target);
     switch (target) {
       case 'chrome.app': {
         return getTargetTasks(

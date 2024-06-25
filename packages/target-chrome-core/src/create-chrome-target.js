@@ -360,11 +360,13 @@ function createChromeTarget(
 
   async function getStorybook() {
     const url = `${resolvedBaseUrl}/iframe.html`;
+    console.log("URL>>>", url);
     try {
       const tab = await launchStoriesTab(url);
       return tab.executeFunctionWithWindow(getStories);
     } catch (rawError) {
       const error = unwrapError(rawError);
+      console.log("ERROR>>>", error);
       if (
         error instanceof TimeoutError ||
         (error instanceof FetchingURLsError && error.failedURLs.includes(url))
